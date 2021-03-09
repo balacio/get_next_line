@@ -6,7 +6,7 @@
 /*   By: joagosti <joagosti@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 10:00:50 by joagosti          #+#    #+#             */
-/*   Updated: 2021/03/09 16:34:22 by joagosti         ###   ########.fr       */
+/*   Updated: 2021/03/09 16:37:00 by joagosti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static int			ft_sauce(int read_size, char **save, char **line)
 {
 	if (read_size < 0)
 		return (-1);
-	// else if (read_size == 0 && *save == NULL)
-	else if (read_size == 0)
+	else if (read_size == 0 && *save == NULL)
+	// else if (read_size == 0)
 		return (0);
 	else
 		return (ft_line(save, line));
@@ -65,7 +65,7 @@ int					get_next_line(int fd, char **line)
 		else
 		{
 			tmp = ft_strjoin(save, buf);
-			free(save);
+			// free(save);
 			save = tmp;
 		}
 		free(buf);
