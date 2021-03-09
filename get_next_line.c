@@ -6,7 +6,7 @@
 /*   By: joagosti <joagosti@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 10:00:50 by joagosti          #+#    #+#             */
-/*   Updated: 2021/03/09 16:24:22 by joagosti         ###   ########.fr       */
+/*   Updated: 2021/03/09 16:25:14 by joagosti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int					get_next_line(int fd, char **line)
 	// 	return (-1);
 	while ((read_size = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
-		if (buf == NULL)
+		if (buf == "")
 			return (0);
 		buf[read_size] = '\0';
 		if (!save)
