@@ -6,11 +6,21 @@
 /*   By: joagosti <joagosti@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 10:00:50 by joagosti          #+#    #+#             */
-/*   Updated: 2021/03/09 18:38:51 by joagosti         ###   ########.fr       */
+/*   Updated: 2021/03/09 18:51:20 by joagosti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+static int			ft_return(char *str1)
+{
+	if (!str1)
+		return (0);
+	if (!ft_strchr(str1, '\n'))
+		return (0);
+	else
+		return (1);
+}
 
 static char			*ft_sauce(char *str1, char *str2)
 {
@@ -27,14 +37,26 @@ static char			*ft_sauce(char *str1, char *str2)
 	return (str1);
 }
 
-static int			ft_return(char *str1)
+static char			*ft_line(char *str1)
 {
+	char			*tmp;
+	int				i;
+
+	i = 0;
 	if (!str1)
 		return (0);
-	if (!ft_strchr(str1, '\n'))
+	while (str1[i] && str1[i] != '\n')
+		i++;
+	if (!(tmp = malloc(sizeof(char) * (i + 1))))
 		return (0);
-	else
-		return (1);
+	i = 0;
+	while (str1[i] && str1[i] != '\n')
+	{
+		tmp[i] = str1[i];
+		i++;
+	}
+	tmp[i] = '\0';
+	return (tmp);
 }
 
 static char			*ft_save(char *str1)
@@ -64,53 +86,31 @@ static char			*ft_save(char *str1)
 	return (tmp);
 }
 
-static char			*ft_line(char *str1)
-{
-	char			*tmp;
-	int				i;
-
-	i = 0;
-	if (!str1)
-		return (0);
-	while (str1[i] && str1[i] != '\n')
-		i++;
-	if (!(tmp = malloc(sizeof(char) * (i + 1))))
-		return (0);
-	i = 0;
-	while (str1[i] && str1[i] != '\n')
-	{
-		tmp[i] = str1[i];
-		i++;
-	}
-	tmp[i] = '\0';
-	return (tmp);
-}
-
 int		get_next_line(int fd, char **line)
 {
 	char			*buf;
 	static char		*save;
-	int				reader_size;
+	int				reading;
 
-	reader_size = 1;
+	reading = 1;
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	while (reader_size != 0 && !ft_return(save))
+	while (reading != 0 && !ft_return(save))
 	{
-		if ((reader_size = read(fd, buf, BUFFER_SIZE)) == -1)
+		if ((reading = read(fd, buf, BUFFER_SIZE)) == -1)
 		{
 			free(buf);
 			return (-1);
 		}
-		buf[reader_size] = '\0';
+		buf[reading] = '\0';
 		save = ft_sauce(save, buf);
 	}
 	free(buf);
 	*line = ft_line(save);
 	save = ft_save(save);
-	if (reader_size == 0)
+	if (reading == 0)
 		return (0);
 	return (1);
 }
