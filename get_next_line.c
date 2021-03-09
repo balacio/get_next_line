@@ -6,7 +6,7 @@
 /*   By: joagosti <joagosti@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 10:00:50 by joagosti          #+#    #+#             */
-/*   Updated: 2021/03/09 15:36:14 by joagosti         ###   ########.fr       */
+/*   Updated: 2021/03/09 15:48:49 by joagosti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int			ft_line(char **save, char **line)
 		tmp = ft_strdup(&((*save)[len + 1]));
 		free(*save);
 		*save = tmp;
-		if ((*save)[0] == '\0')
+		if ((*save)[0] == '\0' && save)
 			free(save);
 	}
 	else
@@ -42,7 +42,7 @@ static int			ft_sauce(int read_size, char **save, char **line)
 	if (read_size < 0)
 		return (-1);
 	// else if (read_size == 0 && *save == NULL)
-	else if (read_size == 0 && *save == NULL)
+	else if (read_size == 0)
 		return (0);
 	else
 		return (ft_line(save, line));
@@ -56,6 +56,8 @@ int					get_next_line(int fd, char **line)
 	int				read_size;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || !line)
+		return (-1);
+	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	while ((read_size = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
