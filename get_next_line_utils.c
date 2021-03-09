@@ -6,7 +6,7 @@
 /*   By: joagosti <joagosti@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 19:30:15 by joagosti          #+#    #+#             */
-/*   Updated: 2021/03/09 18:41:53 by joagosti         ###   ########.fr       */
+/*   Updated: 2021/03/09 19:00:20 by joagosti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			ft_strlen(const char *s)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	if (!s)
@@ -73,7 +73,7 @@ char		*ft_strdup(const char *s)
 	return (dest);
 }
 
-char	*ft_strchr(const char *s, int c)
+char		*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
