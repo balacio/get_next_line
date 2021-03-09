@@ -6,7 +6,7 @@
 /*   By: joagosti <joagosti@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 10:00:50 by joagosti          #+#    #+#             */
-/*   Updated: 2021/03/09 16:27:36 by joagosti         ###   ########.fr       */
+/*   Updated: 2021/03/09 16:29:22 by joagosti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,8 @@ int					get_next_line(int fd, char **line)
 		return (-1);
 	// if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 	// 	return (-1);
-	while ((read_size = read(fd, buf, BUFFER_SIZE)) > 0)
+	while ((read_size = read(fd, buf, BUFFER_SIZE)) >= 0)
 	{
-		if (buf[0] == '\0')
-			return (0);
 		buf[read_size] = '\0';
 		if (!save)
 			save = ft_strdup(buf);
