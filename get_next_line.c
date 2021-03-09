@@ -6,26 +6,20 @@
 /*   By: joagosti <joagosti@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 10:00:50 by joagosti          #+#    #+#             */
-/*   Updated: 2021/03/09 18:59:52 by joagosti         ###   ########.fr       */
+/*   Updated: 2021/03/09 19:36:16 by joagosti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+/*
+**Thank you to @jpillet, @aclerac, @pmontiel et @tphilipp
+*/
 
-static int			ft_return(char *str1)
-{
-	if (!str1)
-		return (0);
-	if (!ft_strchr(str1, '\n'))
-		return (0);
-	else
-		return (1);
-}
+#include "get_next_line.h"
 
 static char			*ft_sauce(char *str1, char *str2)
 {
+	
 	char			*tmp;
-
 	if (!str1)
 		str1 = ft_strdup(str2);
 	else
@@ -97,7 +91,7 @@ int					get_next_line(int fd, char **line)
 		return (-1);
 	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	while (reading != 0 && !ft_return(save))
+	while (reading != 0 && (!save || !ft_strchr(save, '\n')))
 	{
 		if ((reading = read(fd, buf, BUFFER_SIZE)) == -1)
 		{
