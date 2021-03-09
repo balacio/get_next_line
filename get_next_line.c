@@ -6,7 +6,7 @@
 /*   By: joagosti <joagosti@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 10:00:50 by joagosti          #+#    #+#             */
-/*   Updated: 2021/03/09 20:56:46 by joagosti         ###   ########.fr       */
+/*   Updated: 2021/03/09 20:59:58 by joagosti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 static char			*ft_sauce(char *str1, char *str2)
 {
-	
 	char			*tmp;
+
 	if (!str1)
 		str1 = ft_strdup(str2);
 	else
