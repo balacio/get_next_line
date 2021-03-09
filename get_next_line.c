@@ -6,7 +6,7 @@
 /*   By: joagosti <joagosti@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 10:00:50 by joagosti          #+#    #+#             */
-/*   Updated: 2021/03/09 14:38:01 by joagosti         ###   ########.fr       */
+/*   Updated: 2021/03/09 15:36:14 by joagosti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int			ft_sauce(int read_size, char **save, char **line)
 {
 	if (read_size < 0)
 		return (-1);
+	// else if (read_size == 0 && *save == NULL)
 	else if (read_size == 0 && *save == NULL)
 		return (0);
 	else
