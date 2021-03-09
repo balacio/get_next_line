@@ -6,27 +6,29 @@
 /*   By: joagosti <joagosti@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 19:30:15 by joagosti          #+#    #+#             */
-/*   Updated: 2021/03/09 13:49:15 by joagosti         ###   ########.fr       */
+/*   Updated: 2021/03/09 18:41:53 by joagosti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t		ft_strlen(const char *s)
+int			ft_strlen(const char *s)
 {
-	size_t	i;
+	int i;
 
 	i = 0;
-	while (s[i])
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
 		i++;
 	return (i);
 }
 
 char		*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len;
-	size_t	i;
-	size_t	j;
+	int		len;
+	int		i;
+	int		j;
 	char	*str;
 
 	if (s1 && s2)
@@ -69,30 +71,6 @@ char		*ft_strdup(const char *s)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-char		*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	i;
-	size_t	j;
-	char	*str;
-
-	str = (char*)malloc(sizeof(*s) * (len + 1));
-	if (!str)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		if (i >= start && j < len)
-		{
-			str[j] = s[i];
-			j++;
-		}
-		i++;
-	}
-	str[j] = 0;
-	return (str);
 }
 
 char	*ft_strchr(const char *s, int c)
