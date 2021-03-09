@@ -6,7 +6,7 @@
 /*   By: joagosti <joagosti@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 10:00:50 by joagosti          #+#    #+#             */
-/*   Updated: 2021/03/09 16:39:32 by joagosti         ###   ########.fr       */
+/*   Updated: 2021/03/09 16:42:11 by joagosti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int					get_next_line(int fd, char **line)
 			free(save);
 			save = tmp;
 		}
-		free(buf);
 		if (ft_strchr(save, '\n'))
 			break;
 	}
